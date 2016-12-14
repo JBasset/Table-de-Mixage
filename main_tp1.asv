@@ -131,15 +131,8 @@ for ii=	79:82
     res = res + [zeros(1,ii*10176), Instru6', zeros(1,Nm-ii*10176-N6)];
 end
 
-resBruite = bruitTonal(res,5,880,5000);
+resBruite = bruit(res,5);
 
-M=128;
-Nfft = 8*M;
-figure,
-spectrogram(res,rectwin(M),M/2,Nfft,fe,'yaxis');
-figure,
-spectrogram(resBruite,rectwin(M),M/2,Nfft,fe,'yaxis');
+%res = faddingOut(res, 8000);
 
-% res = faddingOut(res, 8000);
-
-soundsc(resBruite,fe);
+soundsc(res,fe);
